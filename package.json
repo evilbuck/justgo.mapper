@@ -16,6 +16,7 @@
     "moment": "^2.15.1",
     "morgan": "~1.7.0",
     "q": "^1.4.1",
+    "sendgrid": "^4.7.0",
     "serve-favicon": "~2.3.0",
     "striptags": "^2.1.1"
   },
