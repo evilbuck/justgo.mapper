@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1 Compare Routes
+  h2 Difference: #{difference} minutes
+  h2 Routes
+  ul.legs
+    each step in legs.steps
+      li!= step.html_instructions

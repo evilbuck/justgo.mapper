@@ -19,14 +19,22 @@ var secondLegs = [
     destination: 'Montgomery St Bart Station',
   }
 ];
-router.get('/from_home', function(req, res) {
-  // location.whichWay()
+
+router.get('/compare_routes', function(req, res) {
   location.compare(secondLegs[0], secondLegs[1])
     .then((result) => {
-      console.log('result', result);
-      res.send(result)
+      // console.log('result', result);
+      // console.log(`difference is about ${Math.round(result.difference/1000/60)} minutes`);
+      // res.send(result)
+      // console.log(`render`, result.recommendedRouteDirections.routes);
+      var diffMinutes = Math.round(result.difference / 1000 / 60);
+      res.render(`compare`, {
+        legs: result.recommendedRouteDirections.json.routes[0].legs[0],
+        difference: diffMinutes
+      });
     })
     .fail((error) => {
+      console.error(`/from_home error`, error);
       res.status(500).send(error.message);
     });
 });
